@@ -1,10 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createBoard = void 0;
-const bcrypt_1 = __importDefault(require("bcrypt"));
 const utils_1 = require("../../utils");
 const models_1 = require("../../models");
 const createBoard = async (req, res) => {
@@ -13,7 +9,8 @@ const createBoard = async (req, res) => {
     if (board) {
         throw new utils_1.HttpError(409, "Board with such name already exist");
     }
-    const hashedID = await bcrypt_1.default.hash(title, 1);
+    // const hashedID = await bcrypt.hash(title, 1);
+    const hashedID = (0, utils_1.hashTitle)(title);
     await models_1.Board.create({
         title,
         hashedID,

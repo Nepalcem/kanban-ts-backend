@@ -1,7 +1,9 @@
 import bcrypt from "bcrypt";
-import { HttpError } from "@/utils";
+import { HttpError, hashTitle } from "@/utils";
 import { Board } from "@/models";
 import { Request, Response } from "express";
+
+
 
 export const createBoard = async (req: Request, res: Response) => {
   const { title } = req.body;
@@ -11,7 +13,8 @@ export const createBoard = async (req: Request, res: Response) => {
     throw new HttpError(409, "Board with such name already exist");
   }
 
-  const hashedID = await bcrypt.hash(title, 1);
+  // const hashedID = await bcrypt.hash(title, 1);
+   const hashedID = hashTitle(title);
 
   await Board.create({
     title,

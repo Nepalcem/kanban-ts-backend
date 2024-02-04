@@ -1,0 +1,1 @@
+{"version":3,"file":"boardGetSchema.js","sourceRoot":"","sources":["../../src/joiSchemas/boardGetSchema.ts"],"names":[],"mappings":";;;;;AAAA,8CAAsB;AAEtB,MAAM,cAAc,GAAG,aAAG,CAAC,MAAM,CAAC;IAChC,QAAQ,EAAE,aAAG,CAAC,MAAM,EAAE,CAAC,QAAQ,EAAE,CAAC,QAAQ,CAAC;QACzC,aAAa,EAAE,wBAAwB;KACxC,CAAC;CACH,CAAC,CAAC;AAEH,kBAAe,cAAc,CAAC"}

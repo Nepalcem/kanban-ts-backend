@@ -4,10 +4,11 @@ import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
 dotenv.config({ path: path.join(__dirname, "../environment", ".env") });
-
 import AppError from "errorHandler/errorHandler";
 
 //routers
+import { boardRouter } from "../routes";
+
 
 const app: Express = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
@@ -17,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 //routes
-
+app.use("/boards", boardRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });

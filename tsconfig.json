@@ -10,6 +10,21 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
+    } /* Specify a set of entries that re-map imports to additional lookup locations. */,
+
+    "plugins": [
+      /* Transform paths in output .js files */
+      {
+        "transform": "typescript-transform-paths"
+      },
+      /* Transform paths in output .d.ts files */
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
+    ],
     "outDir": "./dist",
     "skipLibCheck": true,
     "sourceMap": true,

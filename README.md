@@ -1,18 +1,34 @@
 
+# Commands 
+To run the project locally with TS files use:
+```bash
+npm run dev
+```
+
+To Compile TS files into Production ./dist folder use:
+```bash
+npm run build
+```
+
+To run JS files from Production ./dist folder use:
+```bash
+npm start
+```
+
 # Routes
-Creating(POST) a new board. Body: { title}
+Creating a new board(POST) . Body: { title}
 ```bash
 https://kanban-ts-backend.onrender.com/boards/create
 ```
-Updating(PATCH) board. Body: { title, hashedID}
+Updating board(PATCH) . Body: { title, hashedID}
 ```bash
 https://kanban-ts-backend.onrender.com/boards/:hashedID
 ```
-Get(GET) board. Body: { hashedID}
+Get board(GET) . Body: { hashedID}
 ```bash
 https://kanban-ts-backend.onrender.com/boards/:hashedID
 ```
-Removing(DELETE) board. Body: { hashedID}
+Removing board(DELETE). Body: { hashedID}
 ```bash
 https://kanban-ts-backend.onrender.com/boards/:hashedID
 ```
@@ -29,18 +45,3 @@ Deleting Task(DELETE). Body: { _id}
 https://kanban-ts-backend.onrender.com/tasks/
 ```
 
-# Commands 
-To run the project locally with TS files use:
-```bash
-npm run dev
-```
-
-To Compile TS files into Production ./dist folder use:
-```bash
-npm run build
-```
-
-To run JS files from Production ./dist folder use:
-```bash
-npm start
-```

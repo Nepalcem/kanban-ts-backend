@@ -19,13 +19,15 @@ export const validateBoardGetFields = async (
   res: Response,
   next: NextFunction
 ) => {
-  const request = req.body;
-  const { error, value } = boardGetSchema.validate(request);
+  const { hashedID } = req.params;
+
+  const { error, value } = boardGetSchema.validate({hashedID});
+
     if (error) {
         return next(new HttpError(400, "Bad Request or invalid ID"));
     // res.status(400).json({ error: error.details[0].message });
   } else {
-    req.body = value;
+    req.params = value;
     next();
   }
 };

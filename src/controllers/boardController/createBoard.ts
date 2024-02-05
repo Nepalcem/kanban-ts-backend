@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+// import bcrypt from "bcrypt";
 import { HttpError, hashTitle } from "@/utils";
 import { Board } from "@/models";
 import { Request, Response } from "express";
@@ -16,15 +16,17 @@ export const createBoard = async (req: Request, res: Response) => {
   // const hashedID = await bcrypt.hash(title, 1);
    const hashedID = hashTitle(title);
 
-  await Board.create({
+  const createdBoard = await Board.create({
     title,
     hashedID,
   });
-
+  const createdBoardId = createdBoard._id;
+  
   res.status(201).json({
     board: {
       title,
       hashedID,
+      id: createdBoardId
     },
     message: "Board was created!",
   });

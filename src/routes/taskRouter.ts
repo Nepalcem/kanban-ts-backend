@@ -1,0 +1,16 @@
+import express from "express";
+import { ctrl } from "@/controllers/tasksController";
+import { validateBody } from "@/middleWares";
+import { validateTaskCreationFields, validateTaskPatchFields } from "@/middleWares/validateTaskFields";
+
+const taskRouter = express.Router();
+
+taskRouter.post("/create", validateBody, validateTaskCreationFields, ctrl.createTask);
+taskRouter.patch(
+  "/:_id",
+  validateBody,
+  validateTaskPatchFields,
+  ctrl.patchTask
+);
+
+export default taskRouter;

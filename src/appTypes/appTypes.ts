@@ -8,6 +8,6 @@ export interface IBoard {
 export interface ITask {
   title: string;
   description: string;
-  status: "todo" | "in-progress" | "solved";
+  status: "todo" | "in-progress" | "done";
   owner: Schema.Types.ObjectId;
 }

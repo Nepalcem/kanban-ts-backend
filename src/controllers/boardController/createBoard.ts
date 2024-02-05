@@ -20,13 +20,12 @@ export const createBoard = async (req: Request, res: Response) => {
     title,
     hashedID,
   });
-  const createdBoardId = createdBoard._id;
   
   res.status(201).json({
     board: {
       title,
       hashedID,
-      id: createdBoardId
+      id: createdBoard._id,
     },
     message: "Board was created!",
   });

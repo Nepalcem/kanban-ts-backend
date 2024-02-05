@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createBoard = void 0;
+// import bcrypt from "bcrypt";
 const utils_1 = require("../../utils");
 const models_1 = require("../../models");
 const createBoard = async (req, res) => {
@@ -11,7 +12,7 @@ const createBoard = async (req, res) => {
     }
     // const hashedID = await bcrypt.hash(title, 1);
     const hashedID = (0, utils_1.hashTitle)(title);
-    await models_1.Board.create({
+    const createdBoard = await models_1.Board.create({
         title,
         hashedID,
     });
@@ -19,6 +20,7 @@ const createBoard = async (req, res) => {
         board: {
             title,
             hashedID,
+            id: createdBoard._id,
         },
         message: "Board was created!",
     });

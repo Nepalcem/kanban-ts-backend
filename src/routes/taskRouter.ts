@@ -12,5 +12,9 @@ taskRouter.patch(
   validateTaskPatchFields,
   ctrl.patchTask
 );
+taskRouter.delete(
+  "/:_id",
+  ctrl.deleteTask
+);
 
 export default taskRouter;

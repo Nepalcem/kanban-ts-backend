@@ -10,7 +10,7 @@ const taskPatchSchema = Joi.object({
     "any.required": "Missing required Phone field",
   }),
   status: Joi.string()
-    .valid("todo", "in-progress", "solved")
+    .valid("todo", "in-progress", "done")
     .required()
     .messages({
       "any.required": "Missing required status field",

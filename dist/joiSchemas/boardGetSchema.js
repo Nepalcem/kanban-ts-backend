@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const joi_1 = __importDefault(require("joi"));
 const boardGetSchema = joi_1.default.object({
     hashedID: joi_1.default.string().required().messages({
-        "string.base": "Token must be a string",
+        "string.base": "HashedID must be a string",
     }),
 });
 exports.default = boardGetSchema;

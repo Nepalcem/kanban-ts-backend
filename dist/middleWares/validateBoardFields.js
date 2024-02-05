@@ -17,14 +17,14 @@ const validateBoardCreationFields = async (req, res, next) => {
 };
 exports.validateBoardCreationFields = validateBoardCreationFields;
 const validateBoardGetFields = async (req, res, next) => {
-    const request = req.body;
-    const { error, value } = joiSchemas_1.boardGetSchema.validate(request);
+    const { hashedID } = req.params;
+    const { error, value } = joiSchemas_1.boardGetSchema.validate({ hashedID });
     if (error) {
         return next(new utils_1.HttpError(400, "Bad Request or invalid ID"));
         // res.status(400).json({ error: error.details[0].message });
     }
     else {
-        req.body = value;
+        req.params = value;
         next();
     }
 };

@@ -10,7 +10,7 @@ import {
 const boardRouter = express.Router();
 
 boardRouter.post(
-  "/create",
+  "/",
   validateBody,
   validateBoardCreationFields,
   ctrl.createBoard

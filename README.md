@@ -18,7 +18,7 @@ npm start
 # Routes
 Creating a new board(POST) . Body: { title}
 ```bash
-https://kanban-ts-backend.onrender.com/boards/create
+https://kanban-ts-backend.onrender.com/boards/
 ```
 Updating board(PATCH) . Body: { title, hashedID}
 ```bash

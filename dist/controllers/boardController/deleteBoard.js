@@ -9,8 +9,7 @@ const deleteBoard = async (req, res, next) => {
     if (!board) {
         return next(new utils_1.HttpError(404, "Board with such ID doesn't exist"));
     }
-    await models_1.Task.deleteMany({ owner: board._id });
-    await board.deleteOne();
+    await models_1.Board.findOneAndDelete({ hashedID });
     res.status(200).json({
         message: "Board Deleted!",
     });

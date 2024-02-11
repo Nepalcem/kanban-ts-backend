@@ -8,7 +8,6 @@ const validateBoardCreationFields = async (req, res, next) => {
     const { error, value } = joiSchemas_1.boardCreateSchema.validate(request);
     if (error) {
         return next(new utils_1.HttpError(400, "Bad Request"));
-        // res.status(400).json({ error: error.details[0].message });
     }
     else {
         req.body = value;
@@ -21,7 +20,6 @@ const validateBoardGetFields = async (req, res, next) => {
     const { error, value } = joiSchemas_1.boardGetSchema.validate({ hashedID });
     if (error) {
         return next(new utils_1.HttpError(400, "Bad Request or invalid ID"));
-        // res.status(400).json({ error: error.details[0].message });
     }
     else {
         req.params = value;
@@ -30,11 +28,12 @@ const validateBoardGetFields = async (req, res, next) => {
 };
 exports.validateBoardGetFields = validateBoardGetFields;
 const validateBoardPatchFields = async (req, res, next) => {
+    const { hashedID } = req.params;
     const request = req.body;
-    const { error, value } = joiSchemas_1.boardPatchSchema.validate(request);
+    const data = { hashedID, ...request };
+    const { error, value } = joiSchemas_1.boardPatchSchema.validate(data);
     if (error) {
         return next(new utils_1.HttpError(400, "Bad Request or invalid ID"));
-        // res.status(400).json({ error: error.details[0].message });
     }
     else {
         req.body = value;

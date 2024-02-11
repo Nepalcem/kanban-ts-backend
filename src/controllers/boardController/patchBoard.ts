@@ -7,6 +7,7 @@ export const patchBoard = async (
   res: Response,
   next: NextFunction
 ) => {
+
   const { hashedID } = req.params;
   const { title } = req.body;
 
@@ -14,7 +15,7 @@ export const patchBoard = async (
     { hashedID },
     { title },
     { returnDocument: "after" }
-  );
+  ).select("-createdAt -updatedAt");
   if (!board) {
     return next(new HttpError(404, "Board with such ID doesn't exist"));
   }

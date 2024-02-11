@@ -6,7 +6,7 @@ const utils_1 = require("../../utils");
 const patchBoard = async (req, res, next) => {
     const { hashedID } = req.params;
     const { title } = req.body;
-    const board = await models_1.Board.findOneAndUpdate({ hashedID }, { title }, { returnDocument: "after" });
+    const board = await models_1.Board.findOneAndUpdate({ hashedID }, { title }, { returnDocument: "after" }).select("-createdAt -updatedAt");
     if (!board) {
         return next(new utils_1.HttpError(404, "Board with such ID doesn't exist"));
     }

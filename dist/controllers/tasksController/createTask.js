@@ -1,20 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createTask = void 0;
 const utils_1 = require("../../utils");
 const models_1 = require("../../models");
 const createTask = async (req, res) => {
+    const { hashedID } = req.params;
     const body = req.body;
-    const { title } = req.body;
-    const task = await models_1.Task.findOne({ title });
-    if (task) {
-        throw new utils_1.HttpError(409, "Task with such name already exist");
+    const board = await models_1.Board.findOne({ hashedID });
+    if (!board) {
+        throw new utils_1.HttpError(404, "Board not found");
     }
-    const result = await models_1.Task.create({ ...body });
+    const existingTask = board.tasks.find((task) => task.title === body.title);
+    if (existingTask) {
+        throw new utils_1.HttpError(409, "Task with such name already exists in the board");
+    }
+    board.tasks.push(body);
+    await board.save();
     res.status(201).json({
-        result,
+        board,
         message: "Task was created!",
     });
 };
-exports.createTask = createTask;
+exports.default = createTask;
 //# sourceMappingURL=createTask.js.map

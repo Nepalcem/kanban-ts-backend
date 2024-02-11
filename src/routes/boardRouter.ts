@@ -6,6 +6,8 @@ import {
   validateBoardGetFields,
   validateBoardPatchFields,
 } from "middleWares";
+import { validateTaskCreationFields } from "@/middleWares/validateTaskFields";
+
 
 const boardRouter = express.Router();
 
@@ -14,6 +16,12 @@ boardRouter.post(
   validateBody,
   validateBoardCreationFields,
   ctrl.createBoard
+);
+boardRouter.post(
+  "/tasks/:hashedID",
+  validateBody,
+  validateTaskCreationFields,
+  ctrl.createTask
 );
 boardRouter.get("/:hashedID", validateBoardGetFields, ctrl.getBoard);
 boardRouter.patch(

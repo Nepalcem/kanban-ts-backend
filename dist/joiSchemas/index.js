@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.taskPatchSchema = exports.taskCreateSchema = exports.boardPatchSchema = exports.boardGetSchema = exports.boardCreateSchema = void 0;
+exports.taskCreateSchema = exports.boardPatchSchema = exports.boardGetSchema = exports.boardCreateSchema = void 0;
 const boardCreateSchema_1 = __importDefault(require("./boardCreateSchema"));
 exports.boardCreateSchema = boardCreateSchema_1.default;
 const boardGetSchema_1 = __importDefault(require("./boardGetSchema"));
@@ -12,6 +12,4 @@ const boardPatchSchema_1 = __importDefault(require("./boardPatchSchema"));
 exports.boardPatchSchema = boardPatchSchema_1.default;
 const taskCreateSchema_1 = __importDefault(require("./taskCreateSchema"));
 exports.taskCreateSchema = taskCreateSchema_1.default;
-const taskPatchSchema_1 = __importDefault(require("./taskPatchSchema"));
-exports.taskPatchSchema = taskPatchSchema_1.default;
 //# sourceMappingURL=index.js.map

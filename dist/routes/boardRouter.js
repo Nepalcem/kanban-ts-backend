@@ -6,8 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const boardController_1 = require("../controllers/boardController"); //ctrl.createBoard
 const middleWares_1 = require("../middleWares");
+const validateTaskFields_1 = require("../middleWares/validateTaskFields");
 const boardRouter = express_1.default.Router();
 boardRouter.post("/", middleWares_1.validateBody, middleWares_1.validateBoardCreationFields, boardController_1.ctrl.createBoard);
+boardRouter.post("/tasks/:hashedID", middleWares_1.validateBody, validateTaskFields_1.validateTaskCreationFields, boardController_1.ctrl.createTask);
 boardRouter.get("/:hashedID", middleWares_1.validateBoardGetFields, boardController_1.ctrl.getBoard);
 boardRouter.patch("/:hashedID", middleWares_1.validateBody, middleWares_1.validateBoardPatchFields, boardController_1.ctrl.patchBoard);
 boardRouter.delete("/:hashedID", middleWares_1.validateBoardGetFields, boardController_1.ctrl.deleteBoard);

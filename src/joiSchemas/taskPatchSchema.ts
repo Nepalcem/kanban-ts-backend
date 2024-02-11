@@ -10,12 +10,16 @@ const taskPatchSchema = Joi.object({
     "any.required": "Missing required Phone field",
   }),
   status: Joi.string()
-    .valid("todo", "in-progress", "done")
+    .valid("to do", "in-progress", "done")
     .required()
     .messages({
       "any.required": "Missing required status field",
       "any.only": "Invalid status value",
     }),
+  columnIndex: Joi.number().required().messages({
+    "any.required": "Missing required columnIndex field",
+    "number.base": "Column index must be a number",
+  }),
 });
 
 export default taskPatchSchema;

@@ -1,7 +1,6 @@
 import { Schema, model } from "mongoose";
 import { IBoard } from "appTypes/appTypes";
 
-
 const boardSchema = new Schema<IBoard>(
   {
     title: {
@@ -14,8 +13,14 @@ const boardSchema = new Schema<IBoard>(
       type: String,
       required: [true, "hashedID is required"],
     },
+    tasks: [
+      {
+        type: Object,
+        default: [],
+      },
+    ],
   },
-  { versionKey: false, timestamps: true }
+  { versionKey: false, timestamps: false }
 );
 
 

@@ -19,12 +19,14 @@ export const createBoard = async (req: Request, res: Response) => {
   const createdBoard = await Board.create({
     title,
     hashedID,
+    tasks: [],
   });
   
   res.status(201).json({
     board: {
       title,
       hashedID,
+      tasks: [],
       id: createdBoard._id,
     },
     message: "Board was created!",

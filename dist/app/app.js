@@ -18,7 +18,7 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 //routes
 app.use("/boards", routes_1.boardRouter);
-app.use("/tasks", routes_1.taskRouter);
+// app.use("/tasks", taskRouter);
 app.use((req, res) => {
     res.status(404).json({ message: "Not found" });
 });

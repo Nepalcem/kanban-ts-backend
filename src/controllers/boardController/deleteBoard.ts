@@ -1,4 +1,4 @@
-import { Board, Task } from "@/models";
+import { Board} from "@/models";
 import { Request, Response, NextFunction } from "express";
 import { HttpError } from "@/utils";
 
@@ -13,9 +13,7 @@ export const deleteBoard = async (
   if (!board) {
     return next(new HttpError(404, "Board with such ID doesn't exist"));
   }
-
-  await Task.deleteMany({ owner: board._id });
-  await board.deleteOne();
+  await Board.findOneAndDelete({ hashedID });
 
   res.status(200).json({
     message: "Board Deleted!",

@@ -7,7 +7,7 @@ dotenv.config({ path: path.join(__dirname, "../environment", ".env") });
 import AppError from "errorHandler/errorHandler";
 
 //routers
-import { boardRouter, taskRouter } from "../routes";
+import { boardRouter } from "../routes";
 
 
 const app: Express = express();
@@ -19,7 +19,7 @@ app.use(express.json());
 
 //routes
 app.use("/boards", boardRouter);
-app.use("/tasks", taskRouter);
+// app.use("/tasks", taskRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });

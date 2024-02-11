@@ -15,11 +15,13 @@ const createBoard = async (req, res) => {
     const createdBoard = await models_1.Board.create({
         title,
         hashedID,
+        tasks: [],
     });
     res.status(201).json({
         board: {
             title,
             hashedID,
+            tasks: [],
             id: createdBoard._id,
         },
         message: "Board was created!",

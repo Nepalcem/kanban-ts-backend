@@ -9,11 +9,11 @@ export const patchBoard = async (
 ) => {
 
   const { hashedID } = req.params;
-  const { title } = req.body;
+  const { title, tasks } = req.body;
 
   const board = await Board.findOneAndUpdate(
     { hashedID },
-    { title },
+    { title, tasks },
     { returnDocument: "after" }
   ).select("-createdAt -updatedAt");
   if (!board) {

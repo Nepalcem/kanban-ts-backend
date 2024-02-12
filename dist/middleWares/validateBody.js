@@ -5,7 +5,6 @@ const validateBody = async (req, res, next) => {
     const request = req.body;
     if (Object.keys(request).length === 0) {
         return next(new utils_1.HttpError(400, "Missing fields"));
-        // return res.status(400).json({ message: "missing fields" });
     }
     next();
 };

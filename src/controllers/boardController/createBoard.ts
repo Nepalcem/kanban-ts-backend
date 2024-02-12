@@ -1,4 +1,3 @@
-// import bcrypt from "bcrypt";
 import { HttpError, hashTitle } from "@/utils";
 import { Board } from "@/models";
 import { Request, Response } from "express";

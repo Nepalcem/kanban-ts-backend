@@ -18,7 +18,6 @@ class HttpError extends Error {
     this.name = "HttpError";
     this.status = status;
 
-    // Object.setPrototypeOf(this, HttpError.prototype);
   }
 }
 

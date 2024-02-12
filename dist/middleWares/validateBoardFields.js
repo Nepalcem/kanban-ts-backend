@@ -33,6 +33,7 @@ const validateBoardPatchFields = async (req, res, next) => {
     const data = { hashedID, ...request };
     const { error, value } = joiSchemas_1.boardPatchSchema.validate(data);
     if (error) {
+        console.log(error.message);
         return next(new utils_1.HttpError(400, "Bad Request or invalid ID"));
     }
     else {

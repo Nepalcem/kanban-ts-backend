@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createBoard = void 0;
-// import bcrypt from "bcrypt";
 const utils_1 = require("../../utils");
 const models_1 = require("../../models");
 const createBoard = async (req, res) => {

@@ -9,7 +9,6 @@ import AppError from "errorHandler/errorHandler";
 //routers
 import { boardRouter } from "../routes";
 
-
 const app: Express = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
@@ -19,7 +18,6 @@ app.use(express.json());
 
 //routes
 app.use("/boards", boardRouter);
-// app.use("/tasks", taskRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });

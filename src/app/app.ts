@@ -19,14 +19,14 @@ app.use(express.json());
 //routes
 app.use("/boards", boardRouter);
 
-app.use((req, res) => {
+app.use((_req, res) => {
   res.status(404).json({ message: "Not found" });
 });
 
-app.use((err: AppError, req: Request, res: Response, next: NextFunction): Promise<void> => {
+app.use((err: AppError, _req: Request, res: Response, _next: NextFunction): Promise<void> => {
   const { status = 500, message = "Server error" } = err;
-    res.status(status).json({ message: message });
-    return Promise.resolve();
+  res.status(status).json({ message: message });
+  return Promise.resolve();
 });
 
 export default app;

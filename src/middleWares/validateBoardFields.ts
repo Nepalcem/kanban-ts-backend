@@ -50,8 +50,7 @@ export const validateBoardPatchFields = async (
 
   const { error, value } = boardPatchSchema.validate(data);
   if (error) {
-    console.log(error.message)
-    return next(new HttpError(400, "Bad Request or invalid ID"));
+    return next(new HttpError(400, error.message));
 
   } else {
     req.body = value;

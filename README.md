@@ -32,13 +32,13 @@ Removing board(DELETE). Body: { hashedID}
 ```bash
 https://kanban-ts-backend.onrender.com/boards/:hashedID
 ```
-Adding Task(POST). Body: { hashedID, tasks}
+Adding Task(POST). Body: { title, owner(objectId), description, status, columnIndex }
 ```bash
-https://kanban-ts-backend.onrender.com/boards/tasks/:hashedID
+https://kanban-ts-backend.onrender.com/tasks/
 ```
-Updating Task(PATCH). Body: { hashedID, tasks}
+Updating Task(PATCH). Body: { _id, title, description, owner, status, columnIndex }
 ```bash
-https://kanban-ts-backend.onrender.com/boards/:hashedID
+https://kanban-ts-backend.onrender.com/tasks/:_id
 ```
 Deleting Task(DELETE). Body: { hashedID, tasks}
 ```bash

@@ -12,12 +12,6 @@ const boardSchema = new mongoose_1.Schema({
         type: String,
         required: [true, "hashedID is required"],
     },
-    tasks: [
-        {
-            type: Object,
-            default: [],
-        },
-    ],
 }, { versionKey: false, timestamps: false });
 const Board = (0, mongoose_1.model)("Board", boardSchema);
 exports.default = Board;

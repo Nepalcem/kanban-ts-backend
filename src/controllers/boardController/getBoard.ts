@@ -1,5 +1,5 @@
-import { Board } from "@/models";
 import { Request, Response, NextFunction } from "express";
+import { Board, Task } from "@/models";
 import { HttpError } from "@/utils";
 
 export const getBoard = async (
@@ -16,7 +16,10 @@ export const getBoard = async (
     return next(new HttpError(404, "Board with such ID doesn't exist"));
   }
 
+  const tasks = await Task.find({ owner: board._id });
+  
   res.status(200).json({
-    board
+    board,
+    tasks,
   });
 };

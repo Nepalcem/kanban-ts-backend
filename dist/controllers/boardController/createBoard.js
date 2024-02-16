@@ -9,18 +9,15 @@ const createBoard = async (req, res) => {
     if (board) {
         throw new utils_1.HttpError(409, "Board with such name already exist");
     }
-    // const hashedID = await bcrypt.hash(title, 1);
     const hashedID = (0, utils_1.hashTitle)(title);
     const createdBoard = await models_1.Board.create({
         title,
         hashedID,
-        tasks: [],
     });
     res.status(201).json({
         board: {
             title,
             hashedID,
-            tasks: [],
             id: createdBoard._id,
         },
         message: "Board was created!",

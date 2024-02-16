@@ -5,13 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi_1 = __importDefault(require("joi"));
 const taskCreateSchema = joi_1.default.object({
-    title: joi_1.default.string().required().max(16).messages({
+    title: joi_1.default.string().required().max(24).messages({
         "any.required": "Missing required title field",
         "string.max": "Title must be no more than 16 symbols",
         "string.base": "Title must be a string",
     }),
     description: joi_1.default.string().required().messages({
-        "any.required": "Missing required Phone field",
+        "any.required": "Missing required Description field",
     }),
     status: joi_1.default.string()
         .valid("to do", "in-progress", "done")

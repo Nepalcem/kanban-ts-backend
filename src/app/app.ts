@@ -1,11 +1,10 @@
-import express, { Express, NextFunction, Request, Response } from "express";
 import logger from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
 dotenv.config({ path: path.join(__dirname, "../environment", ".env") });
+import express, { Express, NextFunction, Request, Response } from "express";
 import AppError from "errorHandler/errorHandler";
-
 //routers
 import { boardRouter, taskRouter } from "../routes";
 

@@ -3,7 +3,6 @@ import { Schema } from "mongoose";
 export interface IBoard {
   title: string;
   hashedID: string;
-  tasks: ITask[];
 }
 
 export interface ITask {

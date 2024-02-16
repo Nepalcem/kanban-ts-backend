@@ -13,6 +13,6 @@ taskRouter.patch(
   validateTaskFields,
   ctrl.patchTask
 );
-// taskRouter.delete("/:_id", ctrl.deleteTask);
+taskRouter.delete("/:_id", ctrl.deleteTask);
 
 export default taskRouter;

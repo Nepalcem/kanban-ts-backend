@@ -13,12 +13,6 @@ const boardSchema = new Schema<IBoard>(
       type: String,
       required: [true, "hashedID is required"],
     },
-    tasks: [
-      {
-        type: Object,
-        default: [],
-      },
-    ],
   },
   { versionKey: false, timestamps: false }
 );

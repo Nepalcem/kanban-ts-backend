@@ -1,5 +1,5 @@
-import { Board} from "@/models";
 import { Request, Response, NextFunction } from "express";
+import { Board} from "@/models";
 import { HttpError } from "@/utils";
 
 export const deleteBoard = async (

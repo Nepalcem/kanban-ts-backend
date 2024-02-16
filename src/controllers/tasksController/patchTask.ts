@@ -1,20 +1,21 @@
-import { Task } from "@/models";
 import { Request, Response, NextFunction } from "express";
+import { Task } from "@/models";
 import { HttpError } from "@/utils";
 
 const patchTask = async (req: Request, res: Response, next: NextFunction) => {
   const { _id } = req.params;
   const { title, description, status, columnIndex, owner } = req.body;
 
-  const currentTask = await Task.findOne({ _id });
-  if (!currentTask) {
-    return next(new HttpError(404, "Task with such ID doesn't exist"));
-  }
-
   const boardTasks = await Task.find({ owner });
-  if (!boardTasks) {
+  if (!boardTasks || boardTasks.length === 0) {
     return next(new HttpError(404, "No tasks are matching this Board"));
-  }
+  } 
+
+  //  const currentTask = await Task.findOne({ _id });
+  const currentTask = boardTasks.find(task => task._id.toString() === _id)
+   if (!currentTask) {
+     return next(new HttpError(404, "Task with such ID doesn't exist"));
+   }
 
   const updatedTask = {
     title,
@@ -29,6 +30,15 @@ const patchTask = async (req: Request, res: Response, next: NextFunction) => {
     updatedTask.columnIndex === currentTask.columnIndex
   ) {
     await Task.findByIdAndUpdate({ _id }, updatedTask);
+    res.status(200).json({
+      task: {
+        ...updatedTask,
+        _id,
+        owner,
+      },
+      message: "Task updated!",
+    });
+    return
   }
 
   //moving within a single column

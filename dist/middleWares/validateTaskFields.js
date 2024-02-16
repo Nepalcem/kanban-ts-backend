@@ -1,18 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validateTaskCreationFields = void 0;
 const joiSchemas_1 = require("../joiSchemas");
 const utils_1 = require("../utils");
-const validateTaskCreationFields = async (req, res, next) => {
-    const request = req.body;
-    const { error, value } = joiSchemas_1.taskCreateSchema.validate(request);
+const validateTaskFields = async (req, res, next) => {
+    const { title, description, status, columnIndex } = req.body;
+    const { error } = joiSchemas_1.taskCreateSchema.validate({
+        title,
+        description,
+        status,
+        columnIndex,
+    });
     if (error) {
-        return next(new utils_1.HttpError(400, "Bad Request"));
+        return next(new utils_1.HttpError(400, error.message));
     }
     else {
-        req.body = value;
         next();
     }
 };
-exports.validateTaskCreationFields = validateTaskCreationFields;
+exports.default = validateTaskFields;
 //# sourceMappingURL=validateTaskFields.js.map

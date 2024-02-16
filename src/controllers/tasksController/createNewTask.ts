@@ -1,5 +1,5 @@
-import { HttpError } from "@/utils";
 import { Request, Response } from "express";
+import { HttpError } from "@/utils";
 import { Task } from "@/models";
 import { Board } from "@/models";
 

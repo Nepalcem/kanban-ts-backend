@@ -1,5 +1,5 @@
-import { Board } from "@/models";
 import { Request, Response, NextFunction } from "express";
+import { Board } from "@/models";
 import { HttpError } from "@/utils";
 
 export const patchBoard = async (
@@ -7,13 +7,22 @@ export const patchBoard = async (
   res: Response,
   next: NextFunction
 ) => {
-
   const { hashedID } = req.params;
-  const { title, tasks } = req.body;
+  const { title } = req.body;
+
+  const existingBoard = await Board.findOne({ title });
+  if (existingBoard) {
+    return next(
+      new HttpError(
+        409,
+        "Board with such title Already Exist, try a different one"
+      )
+    );
+  }
 
   const board = await Board.findOneAndUpdate(
     { hashedID },
-    { title, tasks },
+    { title },
     { returnDocument: "after" }
   ).select("-createdAt -updatedAt");
   if (!board) {
@@ -21,7 +30,7 @@ export const patchBoard = async (
   }
 
   res.status(200).json({
-      board,
-      message: "Board updated!"
+    board,
+    message: "Board updated!",
   });
 };

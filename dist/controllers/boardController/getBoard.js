@@ -9,8 +9,10 @@ const getBoard = async (req, res, next) => {
     if (!board) {
         return next(new utils_1.HttpError(404, "Board with such ID doesn't exist"));
     }
+    const tasks = await models_1.Task.find({ owner: board._id });
     res.status(200).json({
-        board
+        board,
+        tasks,
     });
 };
 exports.getBoard = getBoard;

@@ -1,5 +1,4 @@
 import Joi from "joi";
-import taskPatchSchema from "./TaskOwnerSchema";
 
 const boardPatchSchema = Joi.object({
   hashedID: Joi.string().required().messages({
@@ -9,7 +8,6 @@ const boardPatchSchema = Joi.object({
     "string.max": "Title must be no more than 16 symbols",
     "string.base": "Title must be a string",
   }),
-  tasks: Joi.array().items(taskPatchSchema),
 });
 
 export default boardPatchSchema;

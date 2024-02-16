@@ -24,11 +24,11 @@ Updating board(PATCH) . Body: { title, hashedID}
 ```bash
 https://kanban-ts-backend.onrender.com/boards/:hashedID
 ```
-Get board(GET) . Body: { hashedID}
+Get board(GET) . Req Params: { hashedID}
 ```bash
 https://kanban-ts-backend.onrender.com/boards/:hashedID
 ```
-Removing board(DELETE). Body: { hashedID}
+Removing board(DELETE). Req Params: { hashedID}
 ```bash
 https://kanban-ts-backend.onrender.com/boards/:hashedID
 ```
@@ -40,8 +40,8 @@ Updating Task(PATCH). Body: { _id, title, description, owner, status, columnInde
 ```bash
 https://kanban-ts-backend.onrender.com/tasks/:_id
 ```
-Deleting Task(DELETE). Body: { hashedID, tasks}
+Deleting Task(DELETE). Req Params: { _id}
 ```bash
-https://kanban-ts-backend.onrender.com/boards/:hashedID
+https://kanban-ts-backend.onrender.com/tasks/:_id
 ```
 

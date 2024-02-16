@@ -14,7 +14,7 @@ export const validateBoardCreationFields = async (
   const request = req.body;
   const { error, value } = boardCreateSchema.validate(request);
   if (error) {
-    return next(new HttpError(400, "Bad Request"));
+    return next(new HttpError(400, error.message));
   } else {
     req.body = value;
     next();
@@ -31,7 +31,7 @@ export const validateBoardGetFields = async (
   const { error, value } = boardGetSchema.validate({ hashedID });
 
   if (error) {
-    return next(new HttpError(400, "Bad Request or invalid ID"));
+    return next(new HttpError(400, error.message));
 
   } else {
     req.params = value;

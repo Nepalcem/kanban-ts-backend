@@ -1,3 +1,4 @@
 import Board from "./board";
+import Task from "./task";
 
-export { Board };
+export { Board, Task };

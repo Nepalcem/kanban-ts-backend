@@ -1,5 +1,5 @@
 import Joi from "joi";
-import taskPatchSchema from "./taskPatchSchema";
+import taskPatchSchema from "./TaskOwnerSchema";
 
 const boardPatchSchema = Joi.object({
   hashedID: Joi.string().required().messages({

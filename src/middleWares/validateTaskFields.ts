@@ -3,17 +3,23 @@ import { Request, Response, NextFunction } from "express";
 import { HttpError } from "@/utils";
 
 
-export const validateTaskCreationFields = async (
+const validateTaskFields = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const request = req.body;
-  const { error, value } = taskCreateSchema.validate(request);
+  const { title, description, status, columnIndex } = req.body;
+  const { error } = taskCreateSchema.validate({
+    title,
+    description,
+    status,
+    columnIndex,
+  });
   if (error) {
-    return next(new HttpError(400, "Bad Request"));
+    return next(new HttpError(400, error.message));
   } else {
-    req.body = value;
     next();
   }
 };
+
+export default validateTaskFields;

@@ -25,7 +25,9 @@ const deleteTask = async (req, res, next) => {
     await models_1.Task.updateMany(filter, update);
     // Update the current task
     await models_1.Task.findOneAndDelete({ _id });
+    const updatedBoardTasks = await models_1.Task.find({ owner });
     res.status(200).json({
+        updatedBoardTasks,
         message: "Task deleted!",
     });
 };

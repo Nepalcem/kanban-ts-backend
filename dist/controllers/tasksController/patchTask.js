@@ -24,12 +24,9 @@ const patchTask = async (req, res, next) => {
     if (updatedTask.status === currentTask.status &&
         updatedTask.columnIndex === currentTask.columnIndex) {
         await models_1.Task.findByIdAndUpdate({ _id }, updatedTask);
+        const updatedBoardTasks = await models_1.Task.find({ owner });
         res.status(200).json({
-            task: {
-                ...updatedTask,
-                _id,
-                owner,
-            },
+            tasks: updatedBoardTasks,
             message: "Task updated!",
         });
         return;

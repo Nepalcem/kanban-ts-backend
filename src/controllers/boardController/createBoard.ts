@@ -21,8 +21,9 @@ export const createBoard = async (req: Request, res: Response) => {
     board: {
       title,
       hashedID,
-      id: createdBoard._id,
+      _id: createdBoard._id,
     },
+    tasks: [],
     message: "Board was created!",
   });
 };

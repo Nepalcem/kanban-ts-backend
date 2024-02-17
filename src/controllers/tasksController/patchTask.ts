@@ -30,12 +30,10 @@ const patchTask = async (req: Request, res: Response, next: NextFunction) => {
     updatedTask.columnIndex === currentTask.columnIndex
   ) {
     await Task.findByIdAndUpdate({ _id }, updatedTask);
+    const updatedBoardTasks = await Task.find({ owner });
+
     res.status(200).json({
-      task: {
-        ...updatedTask,
-        _id,
-        owner,
-      },
+      tasks: updatedBoardTasks,
       message: "Task updated!",
     });
     return

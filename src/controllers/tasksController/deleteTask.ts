@@ -35,8 +35,10 @@ const deleteTask = async (req: Request, res: Response, next: NextFunction) => {
 
   // Update the current task
   await Task.findOneAndDelete({ _id });
+  const updatedBoardTasks = await Task.find({ owner });
 
   res.status(200).json({
+    updatedBoardTasks,
     message: "Task deleted!",
   });
 };

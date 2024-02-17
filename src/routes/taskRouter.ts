@@ -5,7 +5,7 @@ import { validateTaskFields, validateTaskOwner } from "@/middleWares";
 
 const taskRouter = express.Router();
 
-taskRouter.post("/", validateBody,validateTaskOwner, validateTaskFields, ctrl.createNewTask);
+taskRouter.post("/", validateBody, validateTaskOwner, validateTaskFields, ctrl.createNewTask);
 taskRouter.patch(
   "/:_id",
   validateBody,

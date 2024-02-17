@@ -18,8 +18,9 @@ const createBoard = async (req, res) => {
         board: {
             title,
             hashedID,
-            id: createdBoard._id,
+            _id: createdBoard._id,
         },
+        tasks: [],
         message: "Board was created!",
     });
 };

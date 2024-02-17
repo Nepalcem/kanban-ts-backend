@@ -8,6 +8,7 @@ const validateTaskOwner = async (
   next: NextFunction
 ) => {
   const {owner} = req.body;
+ 
   const { error } = validateOwner.validate({ owner });
   if (error) {
     return next(new HttpError(400, error.message));
